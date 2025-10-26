@@ -30,10 +30,17 @@ public class GecisKaydi {
         return tarih.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
     }
     
+    // GÜNCELLENDİ: getGecilenYerlerMetni
+    /**
+     * 'tip.equals("GIRIS")' kontrolü kaldırıldı.
+     * Artık 'gecilenYerler' dizisi doluysa (null veya boş değilse), 
+     * tip ne olursa olsun onu gösterecek.
+     */
     public String getGecilenYerlerMetni() {
-        if (tip.equals("GIRIS") || gecilenYerler == null || gecilenYerler.length == 0) {
+        if (gecilenYerler == null || gecilenYerler.length == 0) {
             return "N/A";
         }
+        // Giriş için tek bir yer, Çıkış için virgülle ayrılmış yerler gösterilecek.
         return String.join(",", gecilenYerler);
     }
     
